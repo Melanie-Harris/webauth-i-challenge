@@ -12,3 +12,5 @@
 -knex migrate:latest
 -knex seed:make 001-users (create seed files. create file for each data set) 
 -knex seed:run (run seeds)
+
+-order

@@ -4,6 +4,18 @@ const db = require('./model.js');
 const bcrypt = require('bcryptjs')
 const router = express.Router();
 
+
+router.get('/users', restricted, (req, res) => {
+    db.find()
+        .then(users => {
+            res.status(200).json(users)
+        })
+        .catch(err => {
+            res.status(400).json({ message: 'sorry could not retrieve users' })
+        })
+})
+
+
 router.post('/reg', (req, res)=>{
     const creds = req.body
     const hash = bcrypt.hashSync(creds.password, 14) 
@@ -16,11 +28,13 @@ router.post('/reg', (req, res)=>{
     })
 })
 
-router.post('/login', restricted, (req, res)=>{
+router.post('/login', (req, res)=>{
     let { password, username} = req.body
 
     db.findBy({username})
     .first()//takes first item out of object
+    //passing it the password guess in plain text and the password hash obtained from the database to validate credentials.
+    //If the password guess is valid, the method returns true, otherwise it returns false.The library will hash the password guess first and then compare the hashes
     .then(user =>{
         if (user && bcrypt.compareSync(password, user.password)){
             res.status(200).json({message: `Hello ${user.username}`})

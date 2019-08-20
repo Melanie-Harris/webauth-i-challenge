@@ -5,8 +5,13 @@ const db = knex(knexConfig.development)
 
 module.exports = {
     add,
-    findBy
+    findBy,
+    find
 } 
+
+function find() {
+    return db("users");
+}
 
 function findBy(body){
     return db('users').where(body)
