@@ -4,13 +4,13 @@ const knexConfig = require('../knexfile.js');
 const db = knex(knexConfig.development)
 
 module.exports = {
-    add,
+    find,
     findBy,
-    find
+    add
 } 
 
 function find() {
-    return db("users");
+    return db("users").select('id', 'username')
 }
 
 function findBy(body){
