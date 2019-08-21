@@ -12,10 +12,9 @@ router.get('/', restricted, (req, res) => {
             res.status(200).json(users)
         })
         .catch(err => {
-            res.status(400).json({ message: 'sorry could not retrieve users' })
+            res.status(400).json({ message: 'Sorry, could not retrieve users' })
         })
 })
-
 
 
 module.exports = router;

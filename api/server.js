@@ -15,7 +15,7 @@ const sessionConfig = {
     name: 'CoolBeanz', // name of cookie- default name for cookies is "sid" if you don't provide cookie, change name to make it harder for hackers
     secret: 'it is none of your business!', // encrypts cookie
     cookie: {
-        maxAge: 1000 * 30, //specify how long the session will be valid for in milliseconds. will expire after this
+        maxAge: 1000 * 30,// (30 seconds) //specify how long the session will be valid for in milliseconds. will expire after this
         secure: false, //can you send cookie over un-encrypted connection http. can be false during development but true during production
         httpOnly: true, //cookie can't be accessed through javascript
     },
